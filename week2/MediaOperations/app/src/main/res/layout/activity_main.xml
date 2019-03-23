@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="20dp"
+    tools:context="gykizmir.com.mediaoperations.MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="center">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="3dp"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+                <Button
+                    android:id="@+id/fotoCek"
+                    android:layout_weight="1"
+                    android:layout_width="150dp"
+                    android:layout_height="80dp"
+                    android:text="Fotograf Ekle"
+                    android:background="@color/green"
+                    android:textColor="@color/colorWhite"/>
+
+            <Button
+                android:layout_marginLeft="5dp"
+                android:id="@+id/sesKaydet"
+                android:layout_weight="1"
+                android:layout_width="150dp"
+                android:layout_height="80dp"
+                android:text="Ses Kaydet"
+                android:background="@color/blue"
+                android:textColor="@color/colorWhite"/>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:weightSum="2"
+            android:layout_margin="3dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/haritayaGit"
+                android:layout_weight="1"
+                android:layout_width="150dp"
+                android:layout_height="80dp"
+                android:text="Haritaya Git"
+                android:background="@color/purple"
+                android:textColor="@color/colorWhite"/>
+
+            <Button
+                android:layout_marginLeft="5dp"
+                android:id="@+id/webSayfasinaGit"
+                android:layout_weight="1"
+                android:layout_width="150dp"
+                android:layout_height="80dp"
+                android:text="WEB SAYFASINA GIT"
+                android:background="@color/orange"
+                android:textColor="@color/colorWhite"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:weightSum="2"
+            android:layout_margin="3dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/smsGonder"
+                android:layout_weight="1"
+                android:layout_width="150dp"
+                android:layout_height="80dp"
+                android:text="Sms Gonder"
+                android:background="@color/darkgray"
+                android:textColor="@color/colorWhite"/>
+
+            <Button
+                android:layout_marginLeft="5dp"
+                android:id="@+id/aramaYap"
+                android:layout_weight="1"
+                android:layout_width="150dp"
+                android:layout_height="80dp"
+                android:text="Arama Yap"
+                android:background="@color/red"
+                android:textColor="@color/colorWhite"/>
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+
+</LinearLayout>
