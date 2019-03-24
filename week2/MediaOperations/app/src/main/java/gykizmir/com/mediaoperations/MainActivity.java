@@ -41,7 +41,25 @@ public class MainActivity extends AppCompatActivity {
                 changeActivity(v);
             }
         });
+        haritaBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                changeActivity(v);
+            }
+        });
 
+        aramaBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                changeActivity(v);
+            }
+        });
+        smsBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                changeActivity(v);
+            }
+        });
     }
 
     public void changeActivity(View view){
@@ -53,6 +71,15 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         } else if (view == webBtn){
             Intent intent = new Intent(MainActivity.this, WebActivity.class);
+            startActivity(intent);
+        } else if(view == haritaBtn){
+            Intent intent = new Intent(MainActivity.this, HaritaActivity.class);
+            startActivity(intent);
+        } else if(view == aramaBtn){
+            Intent intent = new Intent(MainActivity.this, AramaActivity.class);
+            startActivity(intent);
+        } else if(view == smsBtn){
+            Intent intent = new Intent(MainActivity.this, SmsActivity.class);
             startActivity(intent);
         }
 
