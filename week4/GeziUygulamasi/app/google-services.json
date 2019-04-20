@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "268412094108",
+    "firebase_url": "https://geziuygulamasi-2a9f2.firebaseio.com",
+    "project_id": "geziuygulamasi-2a9f2",
+    "storage_bucket": "geziuygulamasi-2a9f2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:268412094108:android:fbe00ecba3bce004",
+        "android_client_info": {
+          "package_name": "gykizmir.com.geziuygulamasi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "268412094108-5il7mruq00gqkid45c2d44t5i36ipsb2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "gykizmir.com.geziuygulamasi",
+            "certificate_hash": "67fd9f1afcd490e7179f6b6bd17e9fd679b3f4c5"
+          }
+        },
+        {
+          "client_id": "268412094108-couml3kqm9j5g7s6u25t8p07ejq825v8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD-dyUGLzCRk95vtVnJtCffM_Ob1aB7n2E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "268412094108-couml3kqm9j5g7s6u25t8p07ejq825v8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

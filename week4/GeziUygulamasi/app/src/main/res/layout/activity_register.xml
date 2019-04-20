@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/register_login_background"
+    tools:context="gykizmir.com.geziuygulamasi.RegisterActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="120dp"
+        android:padding="16dp">
+
+        <EditText
+            android:id="@+id/user_mail_register_et"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Email Adresiniz"
+            android:inputType="textPersonName"
+            android:padding="12dp"
+            android:textColor="#fd7953"
+            android:textColorHint="@color/gray"
+            android:background="@color/white"/>
+
+        <EditText
+            android:id="@+id/user_pw_register_et"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Sifreniz"
+            android:inputType="textPassword"
+            android:padding="12dp"
+            android:textColor="#fd7953"
+            android:textColorHint="@color/gray"
+            android:background="@color/white"
+            android:layout_below="@+id/user_mail_register_et"/>
+
+
+        <EditText
+            android:id="@+id/confirm_user_pw_register_et"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Sifrenizi Onaylayiniz"
+            android:inputType="textPassword"
+            android:padding="12dp"
+            android:textColor="#fd7953"
+            android:textColorHint="@color/gray"
+            android:background="@color/white"
+            android:layout_below="@id/user_pw_register_et"/>
+
+        <Button
+            android:id="@+id/register_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Kayit Ol"
+            android:textColor="#fff"
+            android:background="@color/colorPrimary"
+            android:layout_marginTop="15dp"
+            android:layout_below="@id/confirm_user_pw_register_et"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>
