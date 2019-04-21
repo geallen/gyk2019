@@ -1,5 +1,6 @@
 package gykizmir.com.geziuygulamasi;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -30,6 +31,11 @@ public class MainActivity extends AppCompatActivity
         setSupportActionBar(toolbar);
 
         mAuth = FirebaseAuth.getInstance();
+
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.content_frame, new HomeFragment());
+        transaction.commit();
+
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -90,16 +96,17 @@ public class MainActivity extends AppCompatActivity
 
         int id = item.getItemId();
 
-//        if (id == R.id.nav_home) {
-//           // selectedFragment = new HomeFragemt
-//        } else if (id == R.id.nav_profile) {
-//            selectedFragment = new ProfileFragment();
-//        } else if (id == R.id.nav_logOut) {
-//
-//        }
-
         if (id == R.id.nav_profile) {
             selectedFragment = new ProfileFragment();
+        }else if (id == R.id.nav_home) {
+            selectedFragment = new HomeFragment();
+        }else if (id == R.id.nav_logOut) {
+            mAuth.signOut();
+            Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+            startActivity(intent);
+            DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+            drawer.closeDrawer(GravityCompat.START);
+            return true;
         }
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.content_frame, selectedFragment);

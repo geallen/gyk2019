@@ -1,25 +1,30 @@
 package gykizmir.com.geziuygulamasi;
 
 import android.content.Context;
-import android.content.Intent;
+import android.content.DialogInterface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
+import android.widget.AdapterView;
+import android.widget.ListView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link ProfileFragment.OnFragmentInteractionListener} interface
+ * {@link HomeFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link ProfileFragment#newInstance} factory method to
+ * Use the {@link HomeFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class ProfileFragment extends Fragment {
+public class HomeFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -28,10 +33,11 @@ public class ProfileFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    private List<Post> postList = new ArrayList<>();
 
     private OnFragmentInteractionListener mListener;
 
-    public ProfileFragment() {
+    public HomeFragment() {
         // Required empty public constructor
     }
 
@@ -41,11 +47,11 @@ public class ProfileFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment ProfileFragment.
+     * @return A new instance of fragment HomeFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static ProfileFragment newInstance(String param1, String param2) {
-        ProfileFragment fragment = new ProfileFragment();
+    public static HomeFragment newInstance(String param1, String param2) {
+        HomeFragment fragment = new HomeFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -65,26 +71,43 @@ public class ProfileFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_profile, container, false);
+        View view = inflater.inflate(R.layout.fragment_home, container, false);
+        ListView listView = (ListView) view.findViewById(R.id.listView);
 
-        ImageView instagramImg = (ImageView) view.findViewById(R.id.instagram_logo);
+        postList.add(new Post("Trabzon", "Karadenizin incisi olarak tabir edilen, essiz dogasiyla nefes kesen bir sehir Trabzon", R.drawable.foto1));
+        postList.add(new Post("Mardin", "Dicle ve Firat nehirleri arasinda yer alan Mardin Guneydogu Anadolu Bolgesinin en cok merak edilen sehri", R.drawable.foto2));
+        postList.add(new Post("Izmir", "Turkiyenin batisinda, Ege Denizinin kiyisinda yer alan Egenin incisi Izmir, Turkiye nin 3 buyuk sehrinden biri", R.drawable.foto3));
+        postList.add(new Post("Istanbul", "Avrupa ve Asya yi birbirine baglayan, cok sayida medeniyetin izlerini tasiyan Istanbul", R.drawable.foto4));
 
-        instagramImg.setOnClickListener(new View.OnClickListener() {
+
+        PostAdapter postAdapter = new PostAdapter(getLayoutInflater(savedInstanceState), postList);
+        listView.setAdapter(postAdapter);
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onClick(View v) {
-                openInstagram();
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                builder.setTitle("Bilgiler");
+                String selectedName = postList.get(position).getPostName();
+                String selectedDescription = postList.get(position).getPostDescription();
+                int selectedIcon = postList.get(position).getPostImage();
+                String message = selectedName + " " + selectedDescription;
+
+                builder.setIcon(selectedIcon);
+                builder.setMessage(message);
+                builder.setNegativeButton("TAMAM", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                });
+
+                builder.show();
             }
         });
 
+        // Inflate the layout for this fragment
         return view;
-    }
-
-    private void openInstagram(){
-        Uri uri = Uri.parse("https://www.instagram.com/gezlist");
-        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-
-        startActivity(intent);
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -97,7 +120,7 @@ public class ProfileFragment extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        
+
     }
 
     @Override
