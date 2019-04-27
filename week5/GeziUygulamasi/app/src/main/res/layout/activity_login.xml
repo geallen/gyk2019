@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/register_login_background"
+    tools:context="gykizmir.com.geziuygulamasi.LoginActivity">
+
+    <RelativeLayout
+        android:padding="16dp"
+        android:layout_marginTop="120dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <EditText
+            android:id="@+id/user_mail_login_et"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Email Adresiniz"
+            android:inputType="textPersonName"
+            android:padding="12dp"
+            android:textColor="#fd7953"
+            android:textColorHint="@color/gray"
+            android:background="@color/white"/>
+
+        <EditText
+            android:id="@+id/user_pw_login_et"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Sifreniz"
+            android:inputType="textPassword"
+            android:padding="12dp"
+            android:textColor="#fd7953"
+            android:textColorHint="@color/gray"
+            android:background="@color/white"
+            android:layout_below="@+id/user_mail_login_et"/>
+
+        <Button
+            android:id="@+id/user_login_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/user_pw_login_et"
+            android:layout_marginTop="15dp"
+            android:text="Giris Yap"
+            android:background="@color/colorPrimary"
+            android:textColor="#fff"
+            android:padding="16dp"/>
+
+        <Button
+            android:id="@+id/user_register_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/user_login_btn"
+            android:layout_marginTop="15dp"
+            android:text="Kayit Ol"
+            android:background="@color/colorPrimary"
+            android:textColor="#fff"
+            android:padding="16dp"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>
