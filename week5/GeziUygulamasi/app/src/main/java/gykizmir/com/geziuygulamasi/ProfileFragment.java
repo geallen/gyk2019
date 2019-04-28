@@ -1,14 +1,27 @@
 package gykizmir.com.geziuygulamasi;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.Toast;
+
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.drawable.GlideDrawable;
+import com.bumptech.glide.request.animation.GlideAnimation;
+import com.bumptech.glide.request.target.SimpleTarget;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 
 /**
@@ -29,7 +42,10 @@ public class ProfileFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
+    private ImageView changeProfilePhoto;
     private OnFragmentInteractionListener mListener;
+    private ProgressDialog progressDialog;
+    private ImageView profilePhoto;
 
     public ProfileFragment() {
         // Required empty public constructor
@@ -68,7 +84,18 @@ public class ProfileFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
 
+        profilePhoto = (ImageView) view.findViewById(R.id.userImage);
         ImageView instagramImg = (ImageView) view.findViewById(R.id.instagram_logo);
+
+        changeProfilePhoto = (ImageView) view.findViewById(R.id.change_profile_photo);
+
+        changeProfilePhoto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), AddPhotoActivity.class);
+                startActivity(intent);
+            }
+        });
 
         instagramImg.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -78,6 +105,51 @@ public class ProfileFragment extends Fragment {
         });
 
         return view;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        getProfilePhoto();
+    }
+
+    private void getProfilePhoto(){
+        showProgressDialog();
+        FirebaseStorage fStorage = FirebaseStorage.getInstance();
+        StorageReference storageReference = fStorage.getReference();
+        storageReference.child("userprofilephoto").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                progressDialog.dismiss();
+
+                Glide.with(getContext()).load(uri)
+                        .asBitmap()
+                        .centerCrop()
+                        .into(new SimpleTarget<Bitmap>(200, 200) {
+                            @Override
+                            public void onResourceReady(Bitmap resource, GlideAnimation glideAnimation) {
+                                profilePhoto.setImageBitmap(resource);
+                            }
+                        });
+
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                progressDialog.dismiss();
+                Toast.makeText(getContext(), "Fotograf Yuklenemedi", Toast.LENGTH_LONG).show();
+            }
+        });
+
+    }
+
+
+    private void showProgressDialog(){
+        progressDialog = new ProgressDialog(getContext());
+        progressDialog.setMessage("Yukleniyor ...");
+        progressDialog.setCancelable(false);
+        progressDialog.show();
     }
 
     private void openInstagram(){

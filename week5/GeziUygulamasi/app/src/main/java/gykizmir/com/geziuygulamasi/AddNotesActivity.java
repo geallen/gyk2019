@@ -1,6 +1,7 @@
 package gykizmir.com.geziuygulamasi;
 
 import android.content.DialogInterface;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -41,7 +42,7 @@ public class AddNotesActivity extends AppCompatActivity {
         });
     }
 
-    private void addNote(){
+    private void addNote() {
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
         DatabaseReference databaseReference = firebaseDatabase.getReference().child("GezdigimYerler");
 
@@ -49,28 +50,28 @@ public class AddNotesActivity extends AppCompatActivity {
 
         String userNoteDetail = noteDetailTxt.getText().toString();
 
-        if(userNoteDetail.length() >0 ){
+        if (userNoteDetail.length() > 0) {
 
             databaseReference.child(noteId).child("sehirAdi").setValue(userNoteDetail);
             showDialog("Islem Basarili", "Notunuz kaydedildi");
-        } else{
+        } else {
             showDialog("Hata", "Not alani bos gecilemez");
         }
     }
 
-   private void showDialog(String title, String msg){
-       AlertDialog.Builder builder = new AlertDialog.Builder(AddNotesActivity.this);
-       builder.setTitle(title);
-       builder.setMessage(msg);
-       builder.setNegativeButton("TAMAM", new DialogInterface.OnClickListener() {
-           @Override
-           public void onClick(DialogInterface dialog, int which) {
+    private void showDialog(String title, String msg) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(AddNotesActivity.this);
+        builder.setTitle(title);
+        builder.setMessage(msg);
+        builder.setNegativeButton("TAMAM", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
 
-           }
-       });
+            }
+        });
 
-       builder.show();
+        builder.show();
 
 
-   }
+    }
 }

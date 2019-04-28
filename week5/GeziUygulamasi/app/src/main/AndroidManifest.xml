@@ -23,7 +23,8 @@
             android:name=".MainActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".RegisterActivity" />
-        <activity android:name=".AddNotesActivity"></activity>
+        <activity android:name=".AddNotesActivity" />
+        <activity android:name=".AddPhotoActivity"></activity>
     </application>
 
 </manifest>
